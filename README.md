@@ -106,3 +106,19 @@ Run the current checks with:
 npm run check
 node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json
 ```
+
+## BIAFRAL depth scanning
+
+The repo-promises panel currently checks the 2-register depth `<org>/<repo>`.
+The full BIAFRAL grammar extends to 4+ registers: `<org>/<repo>/<copy>/<branch>`,
+with nested `_/AS/<branch>/` chains for integrator-mode depth.
+
+A complete dashborg implementation should scan recursively for nested AS-cast
+working copies, classify each as worker-depth (one visible upstream) or
+integrator-depth (full chain encoded in overpath), and surface dangling
+integration chains — nodes where an inner copy's start-point branch has no
+corresponding outer copy — as a new promise state: `integration-chain-broken`.
+
+The scan depth knob determines visibility: repo-level scanning gives
+worker-mode visibility; full chain scanning gives integrator-mode visibility.
+Both are valid; the dashborg instance selects based on role.
