@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DashBOrg instance config",
+  "type": "object",
+  "required": ["schema", "haecceity", "sources", "visualizations"],
+  "properties": {
+    "schema": { "const": "dashborg.instance.v0" },
+    "haecceity": {
+      "type": "object",
+      "required": ["type", "slug", "displayName"],
+      "properties": {
+        "type": { "type": "string" },
+        "slug": { "type": "string" },
+        "displayName": { "type": "string" },
+        "cards": { "type": "array" }
+      }
+    },
+    "surfaces": { "type": "array" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "name"],
+        "properties": {
+          "type": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "visualizations": { "type": "array" }
+  }
+}
