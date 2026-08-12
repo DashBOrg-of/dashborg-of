@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dashborg snapshot",
+  "type": "object",
+  "required": ["identity", "lineage", "github", "local", "health"],
+  "properties": {
+    "identity": { "type": "object", "required": ["harness", "qSemver", "instanceNumber"] },
+    "lineage": { "type": "object", "required": ["parent", "children"] },
+    "github": { "type": "object", "required": ["organizations", "repositories"] },
+    "local": { "type": "object", "required": ["worktrees", "casts"] },
+    "health": { "type": "object", "required": ["state", "observedAt"] }
+  }
+}
