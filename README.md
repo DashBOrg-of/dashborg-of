@@ -83,3 +83,26 @@ dashborg-of/foo     live org-centric projection and dashboard
 Dashborg consumes the other three surfaces; it does not replace them. The
 abstract class becomes stable only when multiple agent lineages and harnesses
 can produce equivalent snapshots.
+
+## Modular SDK Layout
+
+The repository is now shaped as a small monorepo:
+
+```text
+packages/core
+packages/data-source-heartbeats
+packages/data-source-git-local
+packages/visualization-html
+packages/runtime-node
+```
+
+See [docs/modular-monorepo.md](docs/modular-monorepo.md) for the layer
+boundaries and [docs/instance-recipe.md](docs/instance-recipe.md) for the
+portable recipe each `dashborg-of/{single-agent-haecceity}` repo should follow.
+
+Run the current checks with:
+
+```bash
+npm run check
+node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json
+```

@@ -1,0 +1,64 @@
+{
+  "schema": "dashborg.instance.v0",
+  "haecceity": {
+    "type": "single-agent-haecceity",
+    "slug": "arcturus-ottobot",
+    "displayName": "Arcturus Ottobot",
+    "cards": [
+      {
+        "system": "project",
+        "card": "trident-a-hearts",
+        "role": "historical-memory-steward"
+      },
+      {
+        "system": "thread",
+        "card": "leia-organa-bespin-oufit",
+        "role": "thread-id-card"
+      }
+    ]
+  },
+  "surfaces": [
+    {
+      "name": "agent",
+      "host": "127.0.0.1",
+      "port": 4828,
+      "canWrite": true,
+      "exposeRaw": true
+    },
+    {
+      "name": "network",
+      "host": "0.0.0.0",
+      "port": 4829,
+      "canWrite": false,
+      "exposeRaw": false
+    }
+  ],
+  "sources": [
+    {
+      "type": "heartbeat-jsonl",
+      "name": "arcturus-heartbeats",
+      "path": "data/heartbeats.jsonl"
+    },
+    {
+      "type": "git-local",
+      "name": "pfm-office-working-copies",
+      "root": "../..",
+      "exclude": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build"
+      ]
+    }
+  ],
+  "visualizations": [
+    {
+      "type": "html",
+      "name": "home"
+    },
+    {
+      "type": "json",
+      "name": "inventory"
+    }
+  ]
+}

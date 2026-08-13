@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Dashborg snapshot",
+  "title": "DashBOrg snapshot",
   "type": "object",
-  "required": ["identity", "lineage", "github", "local", "health"],
+  "required": ["schema", "observedAt", "identity", "sources", "health"],
   "properties": {
-    "identity": { "type": "object", "required": ["harness", "qSemver", "instanceNumber"] },
-    "lineage": { "type": "object", "required": ["parent", "children"] },
-    "github": { "type": "object", "required": ["organizations", "repositories"] },
-    "local": { "type": "object", "required": ["worktrees", "casts"] },
+    "schema": { "const": "dashborg.snapshot.v0" },
+    "observedAt": { "type": "string", "format": "date-time" },
+    "identity": { "type": "object", "required": ["type", "slug", "displayName"] },
+    "surfaces": { "type": "array" },
+    "sources": { "type": "array" },
     "health": { "type": "object", "required": ["state", "observedAt"] }
   }
 }

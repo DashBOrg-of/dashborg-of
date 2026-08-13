@@ -1,0 +1,15 @@
+{
+  "name": "@dashborg-of/dashborg-of",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Abstract DashBOrg contract and portable personal dashboard SDK.",
+  "workspaces": [
+    "packages/*",
+    "instances/*"
+  ],
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "snapshot:example": "node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json"
+  }
+}
