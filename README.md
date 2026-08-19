@@ -106,3 +106,16 @@ Run the current checks with:
 npm run check
 node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json
 ```
+
+To actually bind an instance's configured surfaces (not just produce a
+one-shot snapshot):
+
+```bash
+node packages/runtime-node/src/serve.mjs examples/arcturus.instance.json
+```
+
+Starts one HTTP listener per entry in `instance.surfaces`. `GET /snapshot`
+returns the full snapshot on a surface with `exposeRaw: true`, and the
+redacted form (via `redactSnapshot`, already in `packages/core`) otherwise.
+`POST /heartbeat` appends to the instance's `heartbeat-jsonl` source, but
+only on a surface with `canWrite: true` — any other surface gets `403`.
