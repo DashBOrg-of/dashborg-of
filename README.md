@@ -109,7 +109,7 @@ node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.j
 
 ## BIAFRAL depth scanning
 
-The repo-promises panel currently checks the 2-register depth `<org>/<repo>`.
+A repo-promises panel should start by checking the 2-register depth `<org>/<repo>`.
 The full BIAFRAL grammar extends to 4+ registers: `<org>/<repo>/<copy>/<branch>`,
 with nested `_/AS/<branch>/` chains for integrator-mode depth.
 
