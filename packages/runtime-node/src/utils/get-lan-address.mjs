@@ -9,10 +9,9 @@
  * or null if no active network adapter found.
  */
 
-export function getLanAddress() {
-  // Node.js built-in: query system network interfaces
-  const { networkInterfaces } = await import('node:os');
+import { networkInterfaces } from 'node:os';
 
+export function getLanAddress() {
   const interfaces = networkInterfaces();
   let activeAdapter = null;
 

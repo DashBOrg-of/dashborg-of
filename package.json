@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "check": "node scripts/check.mjs",
-    "snapshot:example": "node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json"
+    "snapshot:example": "node packages/runtime-node/src/collect-snapshot.mjs examples/arcturus.instance.json",
+    "serve:example": "node packages/runtime-node/src/serve.mjs examples/arcturus.instance.json"
   }
 }
