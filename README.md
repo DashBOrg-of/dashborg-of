@@ -135,3 +135,35 @@ corresponding outer copy — as a new promise state: `integration-chain-broken`.
 The scan depth knob determines visibility: repo-level scanning gives
 worker-mode visibility; full chain scanning gives integrator-mode visibility.
 Both are valid; the dashborg instance selects based on role.
+
+## WordPress implementation contract
+
+The abstract contract does not require a static site or a generated artifact.
+The canonical implementation path for a shared project control plane is a
+WordPress application when human and agent operators need one inspectable
+surface. `dashborg-of/LeagueOS` is the first concrete implementation of this
+path.
+
+Its WordPress model must map first-class nouns to durable records: agents,
+harnesses, workspaces, repositories, worktrees, branches, environments,
+deployments, issues, pull requests, evidence, and events. REST responses and
+browser pages must read the same records. Hooks may append observations, but
+they must not silently turn an observation into accepted truth.
+
+### Critique of the static-artifact phase
+
+The earlier viewer/build-artifact pattern was a useful prototype for layout
+and telemetry, but it was not a sufficient dashborg implementation. It
+conflated exported state with live state, treated lease files as proof that a
+process was running, and did not join source SHA, worktree, container mount,
+deployment, and rendered validation into one queryable graph. Future
+implementations must expose those distinctions explicitly and preserve
+`missing`, `inaccessible`, `stale`, `unsupported`, and `verified-empty` as
+different states.
+
+### Human/agent simultaneity
+
+A dashborg is successful only when the same current state is visible in both
+places at once: a human can navigate the WordPress UI while an agent reads the
+authenticated REST contract or hook endpoint. Neither interface is a sketch
+of the other, and neither is allowed to become a private second database.
